@@ -93,7 +93,7 @@ const cvStorage = new CloudinaryStorage({
   cloudinary,
   params: (req, file) => ({
     folder:          'alazab/cvs',
-    resource_type:   'auto',
+    resource_type:   'raw',
     allowed_formats: ['pdf'],
     public_id:       Date.now() + '_' + file.originalname.replace(/\s/g, '_'),
   }),
@@ -157,7 +157,7 @@ function toInlineUrl(url) {
 // ──────────────────────────────────────────────
 //  ✅ NEWS JSON GENERATOR
 // ──────────────────────────────────────────────
-const NEWS_JSON_PATH = path.join(__dirname, '../alazab/news-data.json');
+const NEWS_JSON_PATH = path.join(__dirname, '../alazab/news-data.txt');
 async function updateNewsJson() {
   try {
     const news = await News.find({ published: true }).sort({ createdAt: -1 });
